@@ -69,7 +69,12 @@
               data:{username:username,password:password},
               success:function(res){
                   console.info(res);
-                  window.location = 'index.html'
+                  alert('success')
+                  // window.location = 'index.html'
+              },
+              error:function(res){
+                  console.info(res);
+                  alert('failure');
               }
           })
       }

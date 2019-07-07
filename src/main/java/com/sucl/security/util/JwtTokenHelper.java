@@ -1,33 +1,25 @@
-package com.sucl.springsecurity.security.jwt;
+package com.sucl.security.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
+import io.jsonwebtoken.impl.TextCodec;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * JWT工具类
- *
- * @author hackyo
- * Created on 2017/12/8 9:20.
- */
-@Component
-public class JwtTokenHelper implements Serializable {
 
-    /**
-     * 密钥
-     */
-    @Value("${jwt.secret}")
+public class JwtTokenHelper{
+
     private String secret = "sucl";
+
+    public String encodebBse64(String text){
+        return TextCodec.BASE64.encode(text);
+    }
 
     /**
      * 从数据声明生成令牌
@@ -36,7 +28,7 @@ public class JwtTokenHelper implements Serializable {
      * @return 令牌
      */
     private String generateToken(Map<String, Object> claims) {
-        Date expirationDate = new Date(System.currentTimeMillis() + 2592000L * 1000);
+        Date expirationDate = new Date(System.currentTimeMillis() + 600L * 1000);
         return Jwts.builder().setClaims(claims).setExpiration(expirationDate).signWith(SignatureAlgorithm.HS512, secret).compact();
     }
 
@@ -129,9 +121,7 @@ public class JwtTokenHelper implements Serializable {
      * @return 是否有效
      */
     public Boolean validateToken(String token, UserDetails userDetails) {
-     //   JwtUser user = (JwtUser) userDetails;
-        String username = getUsernameFromToken(token);
-        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+        return !isTokenExpired(token) ;
     }
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.sucl.springsecurity;
+package com.sucl.security;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

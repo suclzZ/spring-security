@@ -1,7 +1,7 @@
-package com.sucl.springsecurity.service;
+package com.sucl.security.mgt.service;
 
-import com.sucl.springsecurity.dao.UserRepository;
-import com.sucl.springsecurity.entity.User;
+import com.sucl.security.mgt.dao.UserRepository;
+import com.sucl.security.mgt.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,6 @@
-package com.sucl.springsecurity.entity;
+package com.sucl.security.mgt.entity;
 
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
